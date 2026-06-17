@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirPulse 2.0 – Premium Environmental Intelligence Platform</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Socket.IO Client -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom styling stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i data-lucide="wind" class="text-sky-400 animate-pulse"></i>
+                </div>
+                <div>
+                    <h1>AirPulse 2.0</h1>
+                    <span class="subtitle">Intelligence Hub</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </button>
+                <button class="nav-btn" data-tab="operations">
+                    <i data-lucide="database"></i> DB Control Center
+                </button>
+                <button class="nav-btn" data-tab="sql-console">
+                    <i data-lucide="terminal"></i> SQL Playground
+                </button>
+                <button class="nav-btn" data-tab="mongo-console">
+                    <i data-lucide="cpu"></i> Mongo Console
+                </button>
+                <button class="nav-btn" data-tab="academic-guide">
+                    <i data-lucide="book-open"></i> Academic Guide
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs text-slate-400 font-heading">Visual Theme</span>
+                    <div class="flex gap-1.5" id="theme-selector">
+                        <button class="w-4 h-4 rounded-full bg-sky-400 border border-white scale-125" data-theme="aurora" title="Aurora Air"></button>
+                        <button class="w-4 h-4 rounded-full bg-emerald-400 border border-transparent" data-theme="emerald" title="Emerald Earth"></button>
+                        <button class="w-4 h-4 rounded-full bg-purple-400 border border-transparent" data-theme="neon" title="Neon Future"></button>
+                    </div>
+                </div>
+                
+                <div class="db-status mb-3">
+                    <span class="status-indicator online" id="socket-indicator"></span>
+                    <span id="socket-status-text">Connecting Sockets...</span>
+                </div>
+                
+                <button id="btn-reset-db" class="btn btn-secondary btn-sm w-full">
+                    <i data-lucide="refresh-cw"></i> Re-Seed Database
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <h2 id="page-title">Dashboard Overview</h2>
+                    <p class="text-muted" id="page-subtitle">Real-time air quality metrics and environmental trends.</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-badge">
+                        <i data-lucide="calendar"></i>
+                        <span id="current-datetime">Loading date...</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- TAB: Dashboard -->
+            <section id="tab-dashboard" class="tab-pane active">
+                <div class="dashboard-grid">
+                    
+                    <!-- Filters and Controls Panel -->
+                    <div class="card card-filters flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
+                        <div class="filter-group">
+                            <label for="station-select"><i data-lucide="map-pin"></i> Monitoring Station</label>
+                            <select id="station-select" class="form-select w-[260px]">
+                                <option value="all">Global (All Stations Averages)</option>
+                                <!-- stations populated dynamically -->
+                            </select>
+                        </div>
+                        
+                        <!-- Timeline Replay Controller -->
+                        <div class="flex items-center gap-4 bg-slate-950/60 border border-slate-800/60 rounded-xl px-4 py-1.5">
+                            <div class="flex items-center gap-2">
+                                <button id="btn-timeline-play" class="p-1.5 rounded-lg flex items-center justify-center bg-sky-500/20 text-sky-400 hover:bg-sky-500/30">
+                                    <i data-lucide="play" class="w-4 h-4"></i>
+                                </button>
+                                <span class="text-xs font-semibold text-slate-300">Timeline Replay</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-xs border-l border-slate-800 pl-4" id="replay-speed-controls">
+                                <button class="px-2 py-0.5 rounded text-slate-400" data-speed="2000">0.5x</button>
+                                <button class="px-2 py-0.5 rounded bg-sky-500 text-white" data-speed="1000">1.0x</button>
+                                <button class="px-2 py-0.5 rounded text-slate-400" data-speed="400">2.5x</button>
+                            </div>
+                        </div>
+
+                        <!-- Downloader Exports -->
+                        <div class="flex items-center gap-2">
+                            <a href="/api/reports/download?format=PDF" id="download-pdf-btn" class="p-2 bg-slate-900 border border-slate-800 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 text-xs font-bold">
+                                <i data-lucide="file-text"></i> PDF Report
+                            </a>
+                            <a href="/api/reports/download?format=Excel" id="download-excel-btn" class="p-2 bg-slate-900 border border-slate-800 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 text-xs font-bold">
+                                <i data-lucide="download"></i> Excel
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- AQI Primary Card -->
+                    <div class="card card-aqi">
+                        <div class="card-body aqi-container">
+                            <div class="aqi-gauge-panel">
+                                <div class="aqi-circle" id="aqi-circle-bg">
+                                    <span class="aqi-label">AQI</span>
+                                    <span class="aqi-value" id="dashboard-aqi-value">--</span>
+                                    <span class="aqi-cat-label" id="dashboard-aqi-cat">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="aqi-details">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3 class="text-slate-200">How safe is the air today?</h3>
+                                    <div class="bg-slate-950/80 border border-slate-800 rounded-lg px-2.5 py-1 text-xs text-slate-300 flex items-center gap-1.5">
+                                        <i data-lucide="heart" class="w-4 h-4 text-rose-500 fill-rose-500"></i>
+                                        <span>Eco-Impact Score: <strong id="impact-score">100</strong>/100</span>
+                                    </div>
+                                </div>
+                                <p class="aqi-desc" id="aqi-general-advisory">
+                                    Loading environmental indicators...
+                                </p>
+                                <div class="health-warnings">
+                                    <div class="warning-item">
+                                        <i data-lucide="shield-alert" class="text-amber-500"></i>
+                                        <div>
+                                            <strong>Children & Elderly Advisory:</strong>
+                                            <p id="aqi-sensitive-advisory">Loading safety guidance...</p>
+                                        </div>
+                                    </div>
+                                    <div class="warning-item border-t border-slate-900 pt-3">
+                                        <i data-lucide="activity" class="text-emerald-500"></i>
+                                        <div>
+                                            <strong>Eco Action Tip:</strong>
+                                            <p id="aqi-action-tip">Loading actionable tip...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Severe Pollution Alerts (WebSocket Triggered) -->
+                    <div class="card card-alerts">
+                        <div class="card-header justify-between">
+                            <h3><i data-lucide="alert-triangle" class="text-rose-500 animate-bounce"></i> Live Safety Alerts</h3>
+                            <span class="alert-count-badge" id="alert-count">0 Active</span>
+                        </div>
+                        <div class="card-body alert-feed" id="alert-feed-container">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </div>
+
+                    <!-- Spatial Pollution Map Heatmap -->
+                    <div class="card card-map h-[380px] col-span-8 flex flex-col">
+                        <div class="mb-3 flex justify-between items-center shrink-0">
+                            <h3 class="text-sm font-bold font-heading text-slate-200">Interactive Spatial Pollution Heatmap</h3>
+                            <span class="text-[10px] text-slate-400 font-semibold uppercase">Leaflet Map Engine</span>
+                        </div>
+                        <div class="flex-grow w-full rounded-lg overflow-hidden border border-slate-800/40" id="leaflet-map-container">
+                            <!-- Leaflet mount point -->
+                        </div>
+                    </div>
+
+                    <!-- Eco Action Challenges (Gamification) -->
+                    <div class="card card-environmental-facts col-span-4 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-md font-bold font-heading flex items-center gap-2 mb-3 text-slate-200">
+                                <i data-lucide="award" class="text-yellow-500"></i> Eco Action Challenges
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-4 leading-normal">
+                                Complete environmental actions to increase your city's awareness factor:
+                            </p>
+                            <div class="flex flex-col gap-3" id="challenges-container">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                        <div class="border-t border-slate-800/80 pt-4 mt-4 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-heading">Total Awareness Points</span>
+                            <span className="text-xl font-extrabold font-heading text-yellow-400" id="eco-score-val">0 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Health Assistant Diagnostics -->
+                    <div class="card col-span-12">
+                        <h3 class="text-lg font-bold font-heading flex items-center gap-2 mb-4">
+                            <i data-lucide="cpu" class="text-sky-400 animate-pulse"></i> AI Diagnostic Assistant Health Advisory
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="p-4 bg-slate-950/40 border border-slate-800/40 rounded-xl">
+                                <span class="text-xs font-bold text-sky-400 block mb-1">Children & Kids</span>
+                                <p class="text-xs text-slate-300 leading-normal" id="ai-child">Safe overall conditions.</p>
+                            </div>
+                            <div class="p-4 bg-slate-950/40 border border-slate-800/40 rounded-xl">
+                                <span class="text-xs font-bold text-amber-400 block mb-1">Elderly Populations</span>
+                                <p class="text-xs text-slate-300 leading-normal" id="ai-elderly">Safe to exercise outside.</p>
+                            </div>
+                            <div class="p-4 bg-slate-950/40 border border-slate-800/40 rounded-xl">
+                                <span class="text-xs font-bold text-red-450 block mb-1">Asthma Patients</span>
+                                <p class="text-xs text-slate-300 leading-normal" id="ai-asthma">Zero concerns.</p>
+                            </div>
+                            <div class="p-4 bg-slate-950/40 border border-slate-800/40 rounded-xl">
+                                <span class="text-xs font-bold text-emerald-400 block mb-1">Outdoor Labor Workers</span>
+                                <p class="text-xs text-slate-300 leading-normal" id="ai-workers">Ideal working conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pollutants Metric Grid -->
+                    <div class="card card-pollutants-list">
+                        <div class="card-header">
+                            <h3>Active Pollutants Concentrations</h3>
+                            <span class="text-muted">Breakdown vs safe limits</span>
+                        </div>
+                        <div class="pollutant-grid" id="pollutants-container">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Climate Awareness Tip cycler -->
+                    <div class="card card-environmental-facts col-span-4 flex flex-col justify-between h-full min-h-[190px]">
+                        <div>
+                            <h3 class="text-md font-bold font-heading text-sky-400 flex items-center gap-2 mb-2">
+                                <i data-lucide="info" class="w-5 h-5 shrink-0"></i> Climate Awareness
+                            </h3>
+                            <blockquote class="italic text-xs text-slate-200 border-l-2 border-sky-400 pl-4 py-1 leading-relaxed" id="environmental-tip-box">
+                                "The air we breathe is a shared resource."
+                            </blockquote>
+                        </div>
+                        <div class="flex justify-between items-center border-t border-slate-800/80 pt-3 mt-3">
+                            <span class="text-[10px] uppercase font-bold text-sky-400 bg-sky-500/10 border border-sky-500/20 px-2 py-0.5 rounded">
+                                Fact Sheet
+                            </span>
+                            <button id="next-tip-btn" class="p-1 rounded bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-white">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Charts Grid -->
+                    <div class="card card-chart">
+                        <div class="card-header">
+                            <h3>7-Day Trend Timeline Analysis</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card card-chart">
+                        <div class="card-header">
+                            <h3>Global Averages Comparison</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="compareChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: DB Control Center -->
+            <section id="tab-operations" class="tab-pane">
+                <div class="operations-grid">
+                    <div class="ops-left">
+                        <div class="ops-form-container">
+                            <div class="ops-tabs">
+                                <button class="ops-tab-btn active" data-form="insert-record-form">
+                                    <i data-lucide="plus-circle"></i> Insert Measurement
+                                </button>
+                                <button class="ops-tab-btn" data-form="insert-station-form">
+                                    <i data-lucide="map-pin"></i> Add Station Node
+                                </button>
+                            </div>
+
+                            <!-- Form: Insert Record -->
+                            <form id="form-insert-record" class="ops-form active">
+                                <div class="form-grid">
+                                    <div class="form-group col-2">
+                                        <label>Target Station</label>
+                                        <select id="record-station-id" class="form-select bg-slate-950/50" required>
+                                            <!-- Stations list -->
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group"><label>PM2.5 (ug/m³)</label><input type="number" step="any" id="record-pm25" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>PM10 (ug/m³)</label><input type="number" step="any" id="record-pm10" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>CO (mg/m³)</label><input type="number" step="any" id="record-co" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>NO2 (ug/m³)</label><input type="number" step="any" id="record-no2" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>SO2 (ug/m³)</label><input type="number" step="any" id="record-so2" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>O3 (ug/m³)</label><input type="number" step="any" id="record-o3" class="form-input-premium" required></div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4"><i data-lucide="plus-circle"></i> Insert to MongoDB Atlas</button>
+                            </form>
+
+                            <!-- Form: Add Station -->
+                            <form id="form-insert-station" class="ops-form">
+                                <div class="form-grid">
+                                    <div class="form-group col-2"><label>Station Name</label><input type="text" id="station-name" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>City</label><input type="text" id="station-city" class="form-input-premium" required></div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select id="station-status" class="form-select bg-slate-950/50">
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                            <option value="Maintenance">Maintenance</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group"><label>Latitude</label><input type="number" step="any" id="station-lat" class="form-input-premium" required></div>
+                                    <div class="form-group"><label>Longitude</label><input type="number" step="any" id="station-lng" class="form-input-premium" required></div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4"><i data-lucide="plus-circle"></i> Register Station</button>
+                            </form>
+                        </div>
+
+                        <!-- Data table -->
+                        <div class="card mt-6">
+                          <h3 class="text-md font-heading font-bold mb-4 text-slate-200">Recent Database Records</h3>
+                          <div class="table-container">
+                            <table class="data-table">
+                              <thead>
+                                <tr class="text-slate-400">
+                                  <th>ID</th><th>Station</th><th>City</th><th>PM2.5</th><th>AQI</th><th>Category</th><th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody id="db-records-tbody"></tbody>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Live Activity feed -->
+                    <div class="ops-right">
+                        <div class="card sticky-feed">
+                            <div class="card-header justify-between">
+                                <h3><i data-lucide="activity" class="text-emerald-400"></i> DB Activity Feed</h3>
+                                <span class="badge badge-success animate-pulse">Audit Log</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-xs text-slate-400 mb-4">This feed queries the <strong>audit_logs</strong> collection. PyMongo updates this logging collection whenever a DB write occurs:</p>
+                                <div class="audit-log-feed" id="audit-log-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: SQL Console -->
+            <section id="tab-sql-console" class="tab-pane">
+                <div class="sql-console-grid">
+                    <div class="sql-left">
+                        <div class="card h-full flex flex-col">
+                            <h3>Relational SQL Playground</h3>
+                            <div class="query-templates my-4">
+                                <span class="text-xs text-slate-400 font-bold block mb-2">QUICK VIVA TEMPLATES:</span>
+                                <div class="template-buttons flex flex-wrap gap-2">
+                                    <button class="btn btn-secondary btn-xs" data-sql="SELECT * FROM Stations;">1. Stations List</button>
+                                    <button class="btn btn-secondary btn-xs" data-sql="SELECT s.Name, pr.Timestamp, pr.AQI, pr.AQI_Category FROM PollutionRecords pr JOIN Stations s ON pr.StationID = s.StationID ORDER BY pr.AQI DESC LIMIT 5;">2. Join (Top Polluted)</button>
+                                    <button class="btn btn-secondary btn-xs" data-sql="SELECT City, ROUND(AVG(AQI), 2) as AverageAQI, MAX(AQI) as PeakAQI FROM PollutionRecords pr JOIN Stations s ON pr.StationID = s.StationID GROUP BY City HAVING AverageAQI > 50;">3. Group By & Having</button>
+                                    <button class="btn btn-secondary btn-xs" data-sql="SELECT * FROM PollutionRecords WHERE AQI > (SELECT AVG(AQI) FROM PollutionRecords);">4. Nested Query</button>
+                                    <button class="btn btn-secondary btn-xs" data-sql="SELECT * FROM DetailedPollutionDashboard WHERE AQI_Category = 'Severe';">5. Query View</button>
+                                </div>
+                            </div>
+                            <div class="sql-editor-container flex-grow mb-4">
+                                <textarea id="sql-query-editor" class="sql-editor" placeholder="Type SQL query..."></textarea>
+                            </div>
+                            <div class="editor-actions flex gap-2">
+                                <button id="btn-run-query" class="btn btn-primary"><i data-lucide="play"></i> Execute SQL</button>
+                                <button id="btn-clear-query" class="btn btn-secondary">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sql-right">
+                        <div class="card result-card h-full flex flex-col">
+                            <div class="card-header justify-between"><h3>Execution Output</h3><span id="execution-time" class="text-xs text-slate-400">Ready</span></div>
+                            <div class="scrollable-result flex-grow p-4 bg-slate-950/40 rounded-xl" id="sql-result-container">
+                                <div class="no-data"><i data-lucide="terminal" class="text-slate-500"></i><p>Execute a template to view relational tables outputs.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Mongo Console -->
+            <section id="tab-mongo-console" class="tab-pane">
+                <div class="sql-console-grid">
+                    <div class="sql-left">
+                        <div class="card h-full flex flex-col">
+                            <h3>Document MongoDB Playground</h3>
+                            <div class="query-templates my-4">
+                                <span class="text-xs text-slate-400 font-bold block mb-2">QUICK MONGO TEMPLATES:</span>
+                                <div class="template-buttons flex flex-wrap gap-2">
+                                    <button class="btn btn-secondary btn-xs" data-mongo="db.stations.find();">1. Stations Collection</button>
+                                    <button class="btn btn-secondary btn-xs" data-mongo="db.pollution_records.find({&quot;aqi&quot;: {&quot;$gt&quot;: 150}})">2. Query Records (Severe)</button>
+                                    <button class="btn btn-secondary btn-xs" data-mongo="db.pollution_records.aggregate([ { &quot;$group&quot;: { &quot;_id&quot;: &quot;$stationId&quot;, &quot;avgAqi&quot;: { &quot;$avg&quot;: &quot;$aqi&quot; }, &quot;maxAqi&quot;: { &quot;$max&quot;: &quot;$aqi&quot; } } } ])">3. Group Averages (NoSQL)</button>
+                                    <button class="btn btn-secondary btn-xs" data-mongo="db.pollution_records.count_documents();">4. Count Records</button>
+                                </div>
+                            </div>
+                            <div class="sql-editor-container flex-grow mb-4">
+                                <textarea id="mongo-query-editor" class="sql-editor" placeholder="Type MongoDB query... e.g. db.stations.find();" style="color: #a855f7; border-color: rgba(168, 85, 247, 0.08);"></textarea>
+                            </div>
+                            <div class="editor-actions flex gap-2">
+                                <button id="btn-run-mongo" class="btn btn-primary" style="background: var(--accent);"><i data-lucide="play"></i> Execute BSON</button>
+                                <button id="btn-clear-mongo" class="btn btn-secondary">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sql-right">
+                        <div class="card result-card h-full flex flex-col">
+                            <div class="card-header justify-between"><h3>BSON Output</h3><span id="mongo-execution-time" class="text-xs text-slate-400">Ready</span></div>
+                            <div class="scrollable-result flex-grow p-4 bg-slate-950/40 rounded-xl" id="mongo-result-container">
+                                <div class="no-data"><i data-lucide="cpu" class="text-slate-500"></i><p>Execute a MongoDB collection statement query.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Academic Guide -->
+            <section id="tab-academic-guide" class="tab-pane">
+                <div class="grid grid-cols-12 gap-6">
+                    
+                    <!-- System Health status -->
+                    <div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="system-health-grid">
+                        <!-- populated dynamically -->
+                    </div>
+
+                    <!-- Slide: design docs -->
+                    <div class="col-span-12 card p-8">
+                        <h3 class="text-xl font-bold font-heading mb-4 border-b border-slate-800/60 pb-3">AirPulse 2.0 DBMS Design Slides</h3>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-md font-bold font-heading text-sky-400 mb-2">1. Hybrid SQL/NoSQL Architecture</h4>
+                                <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                                    Evaluators expect advanced SQL queries. To support both, AirPulse 2.0 uses a dual-db engine:
+                                    MongoDB Atlas serves the live WebSockets client, while a synchronized SQLite database powers the SQL playground. This allows you to demonstrate SELECT, JOIN, GROUP BY, and nested queries without complex installations.
+                                </p>
+                                
+                                <h4 class="text-md font-bold font-heading text-sky-400 mb-2">2. MongoDB Collections Schema Design</h4>
+                                <ul class="text-xs text-slate-400 list-disc list-inside flex flex-col gap-2 leading-relaxed">
+                                    <li><strong>stations</strong>: GeoJSON geometry type `Point` for mapping capabilities.</li>
+                                    <li><strong>pollution_records</strong>: Chronological indices tracking concentrations of PM2.5, PM10, CO, NO2, SO2, O3.</li>
+                                    <li><strong>system_alerts</strong>: Active threat events generated automatically on write actions.</li>
+                                    <li><strong>audit_logs</strong>: Triggers log before/after JSON states of modified documents.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-slate-950/50 border border-slate-800/80 rounded-xl p-6 flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-sm font-bold font-heading text-slate-200 mb-2">DBMS Evaluator Quick Viva Prep:</h4>
+                                    <div class="flex flex-col gap-3">
+                                      <div class="text-xs">
+                                        <span class="font-bold text-sky-303 block">Q: How do database triggers operate in your NoSQL design?</span>
+                                        <span class="text-slate-400 block mt-0.5">A: In MongoDB, triggers are emulated at the app layer via PyMongo middleware. Inserting a pollution document automatically calculates sub-indices, writes a security alert if thresholds are exceeded, and logs a JSON snapshot to the audit logs collection.</span>
+                                      </div>
+                                      <div class="text-xs border-t border-slate-900 pt-3">
+                                        <span class="font-bold text-sky-303 block">Q: Why use GeoJSON indexes in MongoDB?</span>
+                                        <span class="text-slate-400 block mt-0.5">A: Creating a `2dsphere` index on `stations.location` allows querying nearest stations using `$near` or `$geoWithin` operators. This enables spatial search queries on our dashboard.</span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Record Modal -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Edit Pollution Record</h3>
+                <button id="close-modal-btn" class="btn-icon"><i data-lucide="x"></i></button>
+            </div>
+            <form id="form-edit-record" class="modal-body">
+                <input type="hidden" id="edit-record-id">
+                <div class="form-grid">
+                    <div class="form-group"><label>PM2.5</label><input type="number" step="any" id="edit-pm25" class="form-input-premium" required></div>
+                    <div class="form-group"><label>PM10</label><input type="number" step="any" id="edit-pm10" class="form-input-premium" required></div>
+                    <div class="form-group"><label>CO</label><input type="number" step="any" id="edit-co" class="form-input-premium" required></div>
+                    <div class="form-group"><label>NO2</label><input type="number" step="any" id="edit-no2" class="form-input-premium" required></div>
+                    <div class="form-group"><label>SO2</label><input type="number" step="any" id="edit-so2" class="form-input-premium" required></div>
+                    <div class="form-group"><label>O3</label><input type="number" step="any" id="edit-o3" class="form-input-premium" required></div>
+                </div>
+                <div class="modal-footer mt-6">
+                    <button type="button" id="btn-cancel-edit" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- UI Floating Toasts -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

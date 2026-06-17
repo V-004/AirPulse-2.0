@@ -1,0 +1,9 @@
+Flask>=3.0.0
+pymongo
+python-dotenv
+flask-socketio
+eventlet
+pandas
+reportlab
+openpyxl
+apscheduler

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirPulse – Smart Air Pollution Monitoring & Analytics Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind-inspired custom glassmorphic stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <i data-lucide="wind" class="text-emerald-400 animate-pulse"></i>
+                </div>
+                <div>
+                    <h1>AirPulse</h1>
+                    <span class="subtitle">Smart Environmental Analytics</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </button>
+                <button class="nav-btn" data-tab="operations">
+                    <i data-lucide="database"></i> DB Control Center
+                </button>
+                <button class="nav-btn" data-tab="sql-console">
+                    <i data-lucide="terminal"></i> SQL Console
+                </button>
+                <button class="nav-btn" data-tab="academic-guide">
+                    <i data-lucide="book-open"></i> Academic Guide
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="db-status">
+                    <span class="status-indicator online"></span>
+                    <span>SQLite Connected</span>
+                </div>
+                <button id="btn-reset-db" class="btn btn-secondary btn-sm w-full">
+                    <i data-lucide="rotate-ccw"></i> Reset Database
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <h2 id="page-title">Dashboard Overview</h2>
+                    <p class="text-muted" id="page-subtitle">Real-time air quality metrics and environmental trends.</p>
+                </div>
+                <div class="header-right">
+                    <div class="date-badge">
+                        <i data-lucide="calendar"></i>
+                        <span id="current-datetime">Loading date...</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- TAB: Dashboard -->
+            <section id="tab-dashboard" class="tab-pane active">
+                <div class="dashboard-grid">
+                    <!-- Filters Panel (Glass Card) -->
+                    <div class="card card-filters">
+                        <div class="filter-group">
+                            <label for="station-select"><i data-lucide="map-pin"></i> Monitoring Station</label>
+                            <select id="station-select" class="form-select">
+                                <option value="all">All Stations (Combined)</option>
+                                <!-- Stations dynamic population -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- AQI Primary Card -->
+                    <div class="card card-aqi">
+                        <div class="card-body aqi-container">
+                            <div class="aqi-gauge-panel">
+                                <div class="aqi-circle" id="aqi-circle-bg">
+                                    <span class="aqi-label">AQI</span>
+                                    <span class="aqi-value" id="dashboard-aqi-value">--</span>
+                                    <span class="aqi-cat-label" id="dashboard-aqi-cat">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="aqi-details">
+                                <h3>How safe is the air today?</h3>
+                                <p class="aqi-desc" id="aqi-general-advisory">
+                                    Loading environmental indicators...
+                                </p>
+                                <div class="health-warnings">
+                                    <div class="warning-item">
+                                        <i data-lucide="baby" class="text-amber-400"></i>
+                                        <div>
+                                            <strong>Children & Elderly Advisory:</strong>
+                                            <p id="aqi-sensitive-advisory">Loading safety guidance...</p>
+                                        </div>
+                                    </div>
+                                    <div class="warning-item">
+                                        <i data-lucide="leaf" class="text-emerald-400"></i>
+                                        <div>
+                                            <strong>Small Action to Improve Quality:</strong>
+                                            <p id="aqi-action-tip">Loading actionable tip...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environmental Facts & Tips (Humanized Elements) -->
+                    <div class="card card-environmental-facts">
+                        <div class="card-header">
+                            <h3><i data-lucide="info" class="text-teal-400"></i> Environmental Awareness</h3>
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="environmental-quote" id="environmental-tip-box">
+                                "The air we breathe is a shared resource. Small changes in our daily routines can lead to significant reductions in urban air pollution."
+                            </blockquote>
+                            <div class="fact-footer">
+                                <span class="fact-tag">Daily Tip</span>
+                                <button id="next-tip-btn" class="btn-icon"><i data-lucide="chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Severe Pollution Alerts (Trigger-based Feed) -->
+                    <div class="card card-alerts">
+                        <div class="card-header">
+                            <h3><i data-lucide="bell-ring" class="text-red-400 animate-bounce"></i> Live Safety Alerts</h3>
+                            <span class="alert-count-badge" id="alert-count">0 Active</span>
+                        </div>
+                        <div class="card-body alert-feed" id="alert-feed-container">
+                            <!-- Populated dynamically -->
+                            <div class="no-data">
+                                <i data-lucide="check-circle-2" class="text-emerald-500"></i>
+                                <p>All pollutants are currently within safe limits.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pollutants Metric Grid -->
+                    <div class="card card-pollutants-list">
+                        <div class="card-header">
+                            <h3>Pollutant Breakdown</h3>
+                            <span class="text-muted">Concentration details vs safe limits</span>
+                        </div>
+                        <div class="pollutant-grid">
+                            <div class="pollutant-card" data-pollutant="PM2.5">
+                                <div class="pollutant-meta">
+                                    <span class="pollutant-name">PM<sub>2.5</sub></span>
+                                    <span class="pollutant-val" id="val-pm25">--</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="bar-pm25" style="width: 0%"></div>
+                                </div>
+                                <div class="pollutant-footer">
+                                    <span>Fine Particles</span>
+                                    <span class="limit">Limit: 35 µg/m³</span>
+                                </div>
+                            </div>
+
+                            <div class="pollutant-card" data-pollutant="PM10">
+                                <div class="pollutant-meta">
+                                    <span class="pollutant-name">PM<sub>10</sub></span>
+                                    <span class="pollutant-val" id="val-pm10">--</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="bar-pm10" style="width: 0%"></div>
+                                </div>
+                                <div class="pollutant-footer">
+                                    <span>Coarse Particles</span>
+                                    <span class="limit">Limit: 150 µg/m³</span>
+                                </div>
+                            </div>
+
+                            <div class="pollutant-card" data-pollutant="CO">
+                                <div class="pollutant-meta">
+                                    <span class="pollutant-name">CO</span>
+                                    <span class="pollutant-val" id="val-co">--</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="bar-co" style="width: 0%"></div>
+                                </div>
+                                <div class="pollutant-footer">
+                                    <span>Carbon Monoxide</span>
+                                    <span class="limit">Limit: 9 mg/m³</span>
+                                </div>
+                            </div>
+
+                            <div class="pollutant-card" data-pollutant="NO2">
+                                <div class="pollutant-meta">
+                                    <span class="pollutant-name">NO<sub>2</sub></span>
+                                    <span class="pollutant-val" id="val-no2">--</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="bar-no2" style="width: 0%"></div>
+                                </div>
+                                <div class="pollutant-footer">
+                                    <span>Nitrogen Dioxide</span>
+                                    <span class="limit">Limit: 80 µg/m³</span>
+                                </div>
+                            </div>
+
+                            <div class="pollutant-card" data-pollutant="SO2">
+                                <div class="pollutant-meta">
+                                    <span class="pollutant-name">SO<sub>2</sub></span>
+                                    <span class="pollutant-val" id="val-so2">--</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="bar-so2" style="width: 0%"></div>
+                                </div>
+                                <div class="pollutant-footer">
+                                    <span>Sulfur Dioxide</span>
+                                    <span class="limit">Limit: 75 µg/m³</span>
+                                </div>
+                            </div>
+
+                            <div class="pollutant-card" data-pollutant="O3">
+                                <div class="pollutant-meta">
+                                    <span class="pollutant-name">O<sub>3</sub></span>
+                                    <span class="pollutant-val" id="val-o3">--</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="bar-o3" style="width: 0%"></div>
+                                </div>
+                                <div class="pollutant-footer">
+                                    <span>Ozone</span>
+                                    <span class="limit">Limit: 100 µg/m³</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart 1: Historical AQI Trends -->
+                    <div class="card card-chart">
+                        <div class="card-header">
+                            <h3>AQI Historical Trend</h3>
+                            <span class="text-muted">7-day tracking</span>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: City Comparison -->
+                    <div class="card card-chart">
+                        <div class="card-header">
+                            <h3>City Averages</h3>
+                            <span class="text-muted">Aggregate AQI comparison</span>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="compareChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: DB Control Center -->
+            <section id="tab-operations" class="tab-pane">
+                <div class="operations-grid">
+                    <!-- Left: Control Forms & Table -->
+                    <div class="ops-left">
+                        <!-- Mutation Options Tabs -->
+                        <div class="ops-form-container">
+                            <div class="ops-tabs">
+                                <button class="ops-tab-btn active" data-form="insert-record-form">
+                                    <i data-lucide="plus-circle"></i> Insert AQI Record
+                                </button>
+                                <button class="ops-tab-btn" data-form="insert-station-form">
+                                    <i data-lucide="map-pin"></i> Add Station
+                                </button>
+                            </div>
+
+                            <!-- Form: Insert Record -->
+                            <form id="form-insert-record" class="ops-form active">
+                                <h3>Insert Pollution Record</h3>
+                                <p class="text-muted mb-4">Inserts reading. Database Triggers will automatically calculate AQI categories, audit the insertion, and alert if values exceed limits.</p>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group col-2">
+                                        <label for="record-station-id">Monitoring Station</label>
+                                        <select id="record-station-id" class="form-select" required>
+                                            <!-- Stations list -->
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="record-pm25">PM2.5 (µg/m³)</label>
+                                        <input type="number" id="record-pm25" class="form-input" min="0" max="1000" step="0.1" placeholder="e.g. 15.4" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="record-pm10">PM10 (µg/m³)</label>
+                                        <input type="number" id="record-pm10" class="form-input" min="0" max="1000" step="0.1" placeholder="e.g. 32.1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="record-co">CO (mg/m³)</label>
+                                        <input type="number" id="record-co" class="form-input" min="0" max="100" step="0.01" placeholder="e.g. 0.45" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="record-no2">NO2 (µg/m³)</label>
+                                        <input type="number" id="record-no2" class="form-input" min="0" max="1000" step="0.1" placeholder="e.g. 24.8" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="record-so2">SO2 (µg/m³)</label>
+                                        <input type="number" id="record-so2" class="form-input" min="0" max="1000" step="0.1" placeholder="e.g. 4.2" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="record-o3">O3 (µg/m³)</label>
+                                        <input type="number" id="record-o3" class="form-input" min="0" max="1000" step="0.1" placeholder="e.g. 35.0" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">
+                                    <i data-lucide="database-backup"></i> Insert Record to Database
+                                </button>
+                            </form>
+
+                            <!-- Form: Add Station -->
+                            <form id="form-insert-station" class="ops-form">
+                                <h3>Create Monitoring Station</h3>
+                                <p class="text-muted mb-4">Register a new station. Triggers will log this creation to the admin audit tracking automatically.</p>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group col-2">
+                                        <label for="station-name">Station Name</label>
+                                        <input type="text" id="station-name" class="form-input" placeholder="e.g. Brooklyn Botanical Station" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="station-city">City</label>
+                                        <input type="text" id="station-city" class="form-input" placeholder="e.g. New York" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="station-status">Initial Status</label>
+                                        <select id="station-status" class="form-select">
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                            <option value="Maintenance">Maintenance</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="station-lat">Latitude</label>
+                                        <input type="number" id="station-lat" class="form-input" min="-90" max="90" step="0.000001" placeholder="e.g. 40.6682" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="station-lng">Longitude</label>
+                                        <input type="number" id="station-lng" class="form-input" min="-180" max="180" step="0.000001" placeholder="e.g. -73.9638" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">
+                                    <i data-lucide="plus"></i> Add Station
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Table: CRUD operations log -->
+                        <div class="card mt-6">
+                            <div class="card-header justify-between">
+                                <h3>Recent Database Pollution Records</h3>
+                                <span class="text-xs text-muted">Showing last 10 entries (Editable)</span>
+                            </div>
+                            <div class="table-container">
+                                <table class="data-table" id="db-records-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Station</th>
+                                            <th>City</th>
+                                            <th>PM2.5</th>
+                                            <th>AQI</th>
+                                            <th>Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="db-records-tbody">
+                                        <!-- Populated dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Live Activity Feed (Triggers demonstration) -->
+                    <div class="ops-right">
+                        <div class="card sticky-feed">
+                            <div class="card-header justify-between">
+                                <h3><i data-lucide="activity" class="text-emerald-400"></i> Database Activity Feed</h3>
+                                <span class="badge badge-success animate-pulse">Audit Log Active</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-xs text-muted mb-4">This feed queries the <strong>AuditLog</strong> table. Database inserts, updates, and deletes trigger automated logging. Actions are audited in real time below:</p>
+                                <div class="audit-log-feed" id="audit-log-container">
+                                    <!-- Dynamic elements from AuditLog -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: SQL Console -->
+            <section id="tab-sql-console" class="tab-pane">
+                <div class="sql-console-grid">
+                    <!-- Text Area and templates -->
+                    <div class="sql-left">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Interactive SQL Playground</h3>
+                                <span class="text-muted">Run raw queries against the database schema</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="query-templates">
+                                    <span class="text-xs text-muted font-bold block mb-2">QUICK VIVA TEMPLATES:</span>
+                                    <div class="template-buttons">
+                                        <button class="btn btn-secondary btn-xs" data-sql="SELECT * FROM Stations;">1. Stations List</button>
+                                        <button class="btn btn-secondary btn-xs" data-sql="SELECT s.Name, pr.Timestamp, pr.AQI, pr.AQI_Category FROM PollutionRecords pr JOIN Stations s ON pr.StationID = s.StationID ORDER BY pr.AQI DESC LIMIT 5;">2. Join (Top Polluted)</button>
+                                        <button class="btn btn-secondary btn-xs" data-sql="SELECT City, ROUND(AVG(AQI), 2) as AverageAQI, MAX(AQI) as PeakAQI FROM PollutionRecords pr JOIN Stations s ON pr.StationID = s.StationID GROUP BY City HAVING AverageAQI > 50;">3. Group By & Having</button>
+                                        <button class="btn btn-secondary btn-xs" data-sql="SELECT * FROM PollutionRecords WHERE AQI > (SELECT AVG(AQI) FROM PollutionRecords);">4. Nested Query</button>
+                                        <button class="btn btn-secondary btn-xs" data-sql="SELECT * FROM DetailedPollutionDashboard WHERE AQI_Category = 'Severe';">5. Query View</button>
+                                    </div>
+                                </div>
+                                <div class="sql-editor-container">
+                                    <textarea id="sql-query-editor" class="sql-editor" rows="8" placeholder="Type your SQL query here... e.g., SELECT * FROM Stations;"></textarea>
+                                </div>
+                                <div class="editor-actions">
+                                    <button id="btn-run-query" class="btn btn-primary">
+                                        <i data-lucide="play"></i> Execute Query
+                                    </button>
+                                    <button id="btn-clear-query" class="btn btn-secondary">
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Query Result Panel -->
+                    <div class="sql-right">
+                        <div class="card result-card">
+                            <div class="card-header">
+                                <h3>Execution Output</h3>
+                                <span id="execution-time" class="text-xs text-muted">Ready</span>
+                            </div>
+                            <div class="card-body scrollable-result" id="sql-result-container">
+                                <div class="no-data">
+                                    <i data-lucide="console" class="text-muted"></i>
+                                    <p>Select a quick template or write a custom query, then click Execute Query.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB: Academic Guide -->
+            <section id="tab-academic-guide" class="tab-pane">
+                <div class="guide-container">
+                    <div class="guide-nav">
+                        <button class="guide-nav-btn active" data-slide="abstract">Abstract & Problem</button>
+                        <button class="guide-nav-btn" data-slide="er-diagram">ER Diagram</button>
+                        <button class="guide-nav-btn" data-slide="normalization">Normalization</button>
+                        <button class="guide-nav-btn" data-slide="dbms-concepts">Advanced Concepts</button>
+                        <button class="guide-nav-btn" data-slide="viva-questions">Viva Q&A</button>
+                    </div>
+
+                    <!-- Slide: Abstract & Problem -->
+                    <div id="slide-abstract" class="guide-slide active">
+                        <div class="slide-content">
+                            <h2>Project Abstract & Problem Statement</h2>
+                            <hr class="slide-divider">
+                            <div class="slide-grid">
+                                <div>
+                                    <h3>Project Abstract</h3>
+                                    <p><strong>AirPulse</strong> is a modern environmental analytics platform designed to solve urban air quality monitoring challenges using advanced Database Management System (DBMS) concepts. The system organizes air quality metrics ($PM_{2.5}, PM_{10}, CO, NO_2, SO_2, O_3$) captured from geographical monitoring stations, computes the standardized Air Quality Index (AQI), provides context-aware health advisories, and raises automated system alerts when safe pollution limits are breached.</p>
+                                    <p class="mt-4">Rather than treating the database as a passive storage engine, AirPulse showcases dynamic DBMS functions like trigger-based auditing, conditional logging, custom views, indexing, and transaction-wrapped CRUD actions. A real-time database activity log feed connects the dashboard interface with the SQLite/MySQL engine, making every insertion, update, and deletion visually manifest as dynamic events.</p>
+                                </div>
+                                <div>
+                                    <h3>The Problem Statement</h3>
+                                    <div class="alert-box alert-warning">
+                                        <p><strong>Academic Disconnect:</strong> Traditional college DBMS projects are often back-end operations with dry command-line text logs or simple spreadsheet-like forms. Evaluators cannot see the interactive nature of active databases (triggers, views, constraints, transactions) working in harmony with user-facing dashboards.</p>
+                                    </div>
+                                    <p class="mt-4"><strong>The AirPulse Solution:</strong> AirPulse integrates a premium graphical monitoring analytics dashboard with a fully reactive DBMS playground. By creating automated database listeners (triggers), the system logs every database change into a visible audit table, demonstrates instantaneous safety alerts, and updates live historical trends. This bridges the gap between database theory and visual software architecture.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide: ER Diagram -->
+                    <div id="slide-er-diagram" class="guide-slide">
+                        <div class="slide-content">
+                            <h2>Entity-Relationship (ER) Diagram Description</h2>
+                            <hr class="slide-divider">
+                            <div class="slide-grid">
+                                <div>
+                                    <h3>Entities & Attributes</h3>
+                                    <ul class="guide-list">
+                                        <li><strong>Stations (Weak Entity-Parent)</strong>: Represents active sensors.
+                                            <ul>
+                                                <li><code>StationID</code> (PK) - Uniquely identifies stations.</li>
+                                                <li><code>Name</code> (Unique), <code>City</code>, <code>Latitude</code>, <code>Longitude</code>, <code>Status</code>, <code>EstablishedDate</code>.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>PollutionRecords (Weak Entity-Child)</strong>: Environmental metrics.
+                                            <ul>
+                                                <li><code>RecordID</code> (PK), <code>StationID</code> (FK), <code>Timestamp</code>.</li>
+                                                <li>Pollutants: <code>PM25</code>, <code>PM10</code>, <code>CO</code>, <code>NO2</code>, <code>SO2</code>, <code>O3</code>.</li>
+                                                <li>Derived metrics: <code>AQI</code>, <code>AQI_Category</code> (FK).</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>HealthAdvisories (Lookup Entity)</strong>:
+                                            <ul>
+                                                <li><code>CategoryName</code> (PK) - e.g., 'Good', 'Severe'.</li>
+                                                <li><code>AQILower</code>, <code>AQIUpper</code>, <code>GeneralAdvisory</code>, <code>ChildElderlyAdvisory</code>, <code>ActionTip</code>, <code>ColorCode</code>.</li>
+                                            </ul>
+                                        </li>
+                                        <li><strong>SystemAlerts (Event Entity)</strong>:
+                                            <ul>
+                                                <li><code>AlertID</code> (PK), <code>StationID</code> (FK), <code>RecordID</code> (FK), <code>Pollutant</code>, <code>ObservedValue</code>, <code>ThresholdValue</code>, <code>AlertTimestamp</code>, <code>Status</code>.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Cardinality & Key Relationships</h3>
+                                    <div class="er-visual-box">
+                                        <div class="er-card">
+                                            <strong>Stations (1)</strong>
+                                            <div class="er-line">has many (1:N)</div>
+                                            <strong>PollutionRecords (N)</strong>
+                                        </div>
+                                        <p class="text-xs text-muted mt-2">Each station can have multiple historical pollution readings, but a single pollution reading belongs to exactly one monitoring station. (Referential integrity enforced via <code>ON DELETE CASCADE</code>).</p>
+                                        
+                                        <div class="er-card mt-4">
+                                            <strong>HealthAdvisories (1)</strong>
+                                            <div class="er-line">categorizes (1:N)</div>
+                                            <strong>PollutionRecords (N)</strong>
+                                        </div>
+                                        <p class="text-xs text-muted mt-2">Each record's computed AQI maps to a single health advisory category. The dashboard joins on this key to display custom warning cards.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide: Normalization -->
+                    <div id="slide-normalization" class="guide-slide">
+                        <div class="slide-content">
+                            <h2>Normalization Analysis (Up to 3NF)</h2>
+                            <hr class="slide-divider">
+                            <p class="mb-4">Normalization is the process of structuring relational database columns to minimize redundancy and dependency. Here is how AirPulse satisfies normalization principles:</p>
+                            
+                            <div class="normalization-steps">
+                                <div class="norm-card">
+                                    <h4>1st Normal Form (1NF)</h4>
+                                    <p><strong>Rule:</strong> All attributes must contain atomic (indivisible) values. There are no repeating groups or multi-valued attributes.</p>
+                                    <p class="text-success text-xs"><i data-lucide="check"></i> <strong>Satisfied:</strong> All concentrations, station details, coordinates, and timestamp values are scalar and atomic.</p>
+                                </div>
+
+                                <div class="norm-card">
+                                    <h4>2nd Normal Form (2NF)</h4>
+                                    <p><strong>Rule:</strong> Must be in 1NF, and all non-key attributes must be fully functionally dependent on the entire primary key. (No partial dependencies).</p>
+                                    <p class="text-success text-xs"><i data-lucide="check"></i> <strong>Satisfied:</strong> Since all our primary keys are single-column identifiers (<code>StationID</code>, `RecordID`, `AlertID`), partial key dependencies are mathematically impossible.</p>
+                                </div>
+
+                                <div class="norm-card">
+                                    <h4>3rd Normal Form (3NF)</h4>
+                                    <p><strong>Rule:</strong> Must be in 2NF, and no non-key attribute should transitively depend on the primary key (No transitive dependencies: $A \rightarrow B \rightarrow C$).</p>
+                                    <p class="text-success text-xs"><i data-lucide="check"></i> <strong>Satisfied:</strong> In `PollutionRecords`, values like `PM25` or `CO` depend directly on the `RecordID`. The advisory details (e.g. `GeneralAdvisory`, `ColorCode`) depend on `AQI_Category`, which in turn depends on `AQI`. Storing health advisories in a separate `HealthAdvisories` table with `CategoryName` as the primary key completely eliminates transitive dependencies from `PollutionRecords` to keep it strictly in 3NF.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide: Advanced Concepts -->
+                    <div id="slide-dbms-concepts" class="guide-slide">
+                        <div class="slide-content">
+                            <h2>Triggers, Views, and Advanced DBMS Concepts</h2>
+                            <hr class="slide-divider">
+                            
+                            <div class="grid-2">
+                                <div>
+                                    <h3>1. Database Triggers (Automated Actions)</h3>
+                                    <p>Triggers are precompiled SQL blocks that fire automatically on specific modifications (`INSERT`, `UPDATE`, `DELETE`). AirPulse implements three triggers:</p>
+                                    <ul class="guide-list mt-2">
+                                        <li><strong>Audit Tracker Trigger:</strong> Records old and new states in the `AuditLog` table on any pollution record changes.</li>
+                                        <li><strong>System Alert Generator:</strong> Checks incoming pollutant levels on insert. If $PM_{2.5} > 150.0$, $SO_2 > 75.0$, or $AQI > 200$, it inserts an active threat row into the `SystemAlerts` table.</li>
+                                        <li><strong>Station Audit Trigger:</strong> Logs registration details of new sensors automatically.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>2. Database Views (Simplified Querying)</h3>
+                                    <p>A View is a virtual table representing the result of a saved query. We define `DetailedPollutionDashboard` to join three tables: <code>PollutionRecords</code>, <code>Stations</code>, and <code>HealthAdvisories</code>.</p>
+                                    <p class="text-muted text-xs mt-2">This hides query complexity from the application layer. Instead of writing heavy joins in Flask, the front-end requests <code>SELECT * FROM DetailedPollutionDashboard</code>. This improves modularity and security.</p>
+                                    
+                                    <h3 class="mt-4">3. Indexes (Performance Tuning)</h3>
+                                    <p>We declare indexes on <code>PollutionRecords(StationID)</code> and <code>PollutionRecords(Timestamp)</code>. This reduces the search complexity from $O(N)$ (table scan) to $O(\log N)$ (B-Tree lookup) during dashboard trend rendering.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide: Viva Questions -->
+                    <div id="slide-viva-questions" class="guide-slide">
+                        <div class="slide-content">
+                            <h2>DBMS Viva Voce Preparation (Q&A)</h2>
+                            <hr class="slide-divider">
+                            <div class="viva-qa-list">
+                                <div class="viva-item">
+                                    <span class="question">Q1: What is the benefit of using Foreign Key Constraints like "ON DELETE CASCADE"?</span>
+                                    <p class="answer"><strong>Answer:</strong> It enforces referential integrity. In AirPulse, if an admin deletes a <code>Station</code>, all child <code>PollutionRecords</code> and <code>SystemAlerts</code> pointing to that <code>StationID</code> are automatically purged by the database engine. This prevents "orphan records" and maintains data consistency.</p>
+                                </div>
+                                <div class="viva-item">
+                                    <span class="question">Q2: Why did you compute the AQI category via python/triggers instead of storing it statically?</span>
+                                    <p class="answer"><strong>Answer:</strong> Storing computed categories statically creates transitive dependencies (AQI determines Category), which violates 3NF. In our system, the database references a lookup table <code>HealthAdvisories</code> via a Foreign Key, and we join on it, maintaining strict normalization while maximizing speed.</p>
+                                </div>
+                                <div class="viva-item">
+                                    <span class="question">Q3: How do database triggers help in security auditing?</span>
+                                    <p class="answer"><strong>Answer:</strong> Triggers run directly inside the database kernel. Even if an attacker bypasses the Flask application and modifies the tables directly via an SQL client (like phpMyAdmin), the database triggers will still fire and log their username, timestamp, and query details into the <code>AuditLog</code>. This provides tamper-proof auditing.</p>
+                                </div>
+                                <div class="viva-item">
+                                    <span class="question">Q4: What is the difference between a Database View and a Database Table?</span>
+                                    <p class="answer"><strong>Answer:</strong> A Table stores physical data on disk. A View is a virtual table containing a saved SQL query. It does not occupy storage; rather, it dynamically pulls data from underlying tables whenever it is queried. Views simplify frontend SQL queries and restrict user access to sensitive columns.</p>
+                                </div>
+                                <div class="viva-item">
+                                    <span class="question">Q5: Explain how database transactions ensure reliability in CRUD operations.</span>
+                                    <p class="answer"><strong>Answer:</strong> Transactions follow the ACID properties (Atomicity, Consistency, Isolation, Durability). In our system, if an insert query fails halfway (e.g. fails a check constraint or foreign key check), the database rolls back all partial operations to ensure the database never reaches an inconsistent state.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Record Modal -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Edit Pollution Record</h3>
+                <button id="close-modal-btn" class="btn-icon"><i data-lucide="x"></i></button>
+            </div>
+            <form id="form-edit-record" class="modal-body">
+                <input type="hidden" id="edit-record-id">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="edit-pm25">PM2.5</label>
+                        <input type="number" id="edit-pm25" class="form-input" min="0" max="1000" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-pm10">PM10</label>
+                        <input type="number" id="edit-pm10" class="form-input" min="0" max="1000" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-co">CO</label>
+                        <input type="number" id="edit-co" class="form-input" min="0" max="100" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-no2">NO2</label>
+                        <input type="number" id="edit-no2" class="form-input" min="0" max="1000" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-so2">SO2</label>
+                        <input type="number" id="edit-so2" class="form-input" min="0" max="1000" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-o3">O3</label>
+                        <input type="number" id="edit-o3" class="form-input" min="0" max="1000" step="0.1" required>
+                    </div>
+                </div>
+                <div class="modal-footer mt-6">
+                    <button type="button" id="btn-cancel-edit" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- UI/UX Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,2213 @@
+{
+  "stations": [
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4501",
+      "name": "Central Park Observatory",
+      "city": "New York",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -73.968285,
+          40.785091
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2020-01-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:01",
+        "aqi": 20
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4502",
+      "name": "Westminster Station",
+      "city": "London",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -0.124625,
+          51.500729
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2021-03-22",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:02",
+        "aqi": 25
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4503",
+      "name": "Shinjuku Station South",
+      "city": "Tokyo",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          139.6917,
+          35.6895
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2019-11-01",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:02",
+        "aqi": 21
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4504",
+      "name": "Connaught Place Metro",
+      "city": "Delhi",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.2177,
+          28.6304
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2018-05-12",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:03",
+        "aqi": 117
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4505",
+      "name": "Circular Quay Terminal",
+      "city": "Sydney",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          151.21,
+          -33.8617
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2022-08-30",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:03",
+        "aqi": 53
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4506",
+      "name": "Coordinates: 40.7100, 74.0000",
+      "city": "Geocoded Point",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          74.0,
+          40.71
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:04",
+        "aqi": 57
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4507",
+      "name": "Narela, Delhi, Delhi, India",
+      "city": "india",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          77.101099,
+          28.820629
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:04",
+        "aqi": 73
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4508",
+      "name": "San Jose US Embassy, Costa Rica",
+      "city": "costa rica",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -84.142876,
+          9.949488
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:05",
+        "aqi": 42
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4509",
+      "name": "Chifeng (\u8d64\u5cf0)",
+      "city": "China",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          118.886856,
+          42.257817
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:06",
+        "aqi": 46
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b450a",
+      "name": "Sherbrooke",
+      "city": "Canada",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -71.8824288,
+          45.4009928
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:06",
+        "aqi": 17
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b450b",
+      "name": "S.Bernardo-Centro, S\u00e3o Paulo, Brazil",
+      "city": "Brazil",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -46.546232187,
+          -23.698671086
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-15",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:17:07",
+        "aqi": 53
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b450c",
+      "name": "Bamako US Embassy, Mali",
+      "city": "Mali",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -8.036911,
+          12.632524
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-17",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:21:27",
+        "aqi": 25
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b450d",
+      "name": "Delmas MP, South Africa; Delmas MP, Nkangala, South Africa",
+      "city": "africa",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          28.697015,
+          -26.140316
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-17",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:22:39",
+        "aqi": 175
+      }
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b450e",
+      "name": "Kabul US Embassy, Afganistan",
+      "city": "Afghanistan",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          69.2046,
+          34.554382
+        ]
+      },
+      "status": "Active",
+      "establishedDate": "2026-06-17",
+      "lastReading": {
+        "timestamp": "2026-06-17 12:23:06",
+        "aqi": 76
+      }
+    }
+  ],
+  "pollution_records": [
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4701",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-08 16:13:45",
+      "pollutants": {
+        "pm25": 11.58,
+        "pm10": 37.12,
+        "co": 0.48,
+        "no2": 16.09,
+        "so2": 4.16,
+        "o3": 38.67
+      },
+      "aqi": 38,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4702",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-09 16:13:45",
+      "pollutants": {
+        "pm25": 13.08,
+        "pm10": 22.47,
+        "co": 0.52,
+        "no2": 29.63,
+        "so2": 3.66,
+        "o3": 24.2
+      },
+      "aqi": 38,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4703",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-10 16:13:45",
+      "pollutants": {
+        "pm25": 17.88,
+        "pm10": 28.1,
+        "co": 0.5,
+        "no2": 28.57,
+        "so2": 5.18,
+        "o3": 31.7
+      },
+      "aqi": 37,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4704",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-11 16:13:45",
+      "pollutants": {
+        "pm25": 14.69,
+        "pm10": 40.52,
+        "co": 0.48,
+        "no2": 19.66,
+        "so2": 4.38,
+        "o3": 45.49
+      },
+      "aqi": 45,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4705",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-12 16:13:45",
+      "pollutants": {
+        "pm25": 12.4,
+        "pm10": 23.54,
+        "co": 0.32,
+        "no2": 19.08,
+        "so2": 4.87,
+        "o3": 22.01
+      },
+      "aqi": 24,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4706",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-13 16:13:45",
+      "pollutants": {
+        "pm25": 13.25,
+        "pm10": 19.66,
+        "co": 0.42,
+        "no2": 23.79,
+        "so2": 3.81,
+        "o3": 43.99
+      },
+      "aqi": 43,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4707",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-14 16:13:45",
+      "pollutants": {
+        "pm25": 13.18,
+        "pm10": 23.09,
+        "co": 0.45,
+        "no2": 22.93,
+        "so2": 2.21,
+        "o3": 21.98
+      },
+      "aqi": 29,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4708",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-15 16:13:45",
+      "pollutants": {
+        "pm25": 9.6,
+        "pm10": 39.59,
+        "co": 0.49,
+        "no2": 34.43,
+        "so2": 2.43,
+        "o3": 31.01
+      },
+      "aqi": 44,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4709",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-08 16:13:45",
+      "pollutants": {
+        "pm25": 23.03,
+        "pm10": 51.29,
+        "co": 0.35,
+        "no2": 41.69,
+        "so2": 8.11,
+        "o3": 21.69
+      },
+      "aqi": 54,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b470a",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-09 16:13:45",
+      "pollutants": {
+        "pm25": 21.83,
+        "pm10": 39.54,
+        "co": 0.65,
+        "no2": 40.6,
+        "so2": 3.98,
+        "o3": 24.82
+      },
+      "aqi": 52,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b470b",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-10 16:13:45",
+      "pollutants": {
+        "pm25": 26.29,
+        "pm10": 29.7,
+        "co": 0.37,
+        "no2": 39.15,
+        "so2": 4.32,
+        "o3": 29.06
+      },
+      "aqi": 50,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b470c",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-11 16:13:45",
+      "pollutants": {
+        "pm25": 24.43,
+        "pm10": 31.55,
+        "co": 0.59,
+        "no2": 20.03,
+        "so2": 6.57,
+        "o3": 32.28
+      },
+      "aqi": 36,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b470d",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-12 16:13:45",
+      "pollutants": {
+        "pm25": 20.37,
+        "pm10": 30.79,
+        "co": 0.35,
+        "no2": 19.21,
+        "so2": 7.18,
+        "o3": 20.0
+      },
+      "aqi": 30,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b470e",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-13 16:13:45",
+      "pollutants": {
+        "pm25": 14.69,
+        "pm10": 37.58,
+        "co": 0.45,
+        "no2": 35.64,
+        "so2": 5.12,
+        "o3": 34.22
+      },
+      "aqi": 46,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b470f",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-14 16:13:45",
+      "pollutants": {
+        "pm25": 19.75,
+        "pm10": 25.15,
+        "co": 0.39,
+        "no2": 42.41,
+        "so2": 5.12,
+        "o3": 22.39
+      },
+      "aqi": 55,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4710",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-15 16:13:45",
+      "pollutants": {
+        "pm25": 15.02,
+        "pm10": 41.91,
+        "co": 0.5,
+        "no2": 41.83,
+        "so2": 7.2,
+        "o3": 22.79
+      },
+      "aqi": 54,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4711",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-08 16:13:45",
+      "pollutants": {
+        "pm25": 14.45,
+        "pm10": 27.65,
+        "co": 0.22,
+        "no2": 11.33,
+        "so2": 3.02,
+        "o3": 51.58
+      },
+      "aqi": 51,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4712",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-09 16:13:45",
+      "pollutants": {
+        "pm25": 8.0,
+        "pm10": 18.68,
+        "co": 0.25,
+        "no2": 19.51,
+        "so2": 2.4,
+        "o3": 24.23
+      },
+      "aqi": 25,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4713",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-10 16:13:45",
+      "pollutants": {
+        "pm25": 11.36,
+        "pm10": 22.61,
+        "co": 0.37,
+        "no2": 15.59,
+        "so2": 1.68,
+        "o3": 30.72
+      },
+      "aqi": 30,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4714",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-11 16:13:45",
+      "pollutants": {
+        "pm25": 15.06,
+        "pm10": 18.25,
+        "co": 0.24,
+        "no2": 11.97,
+        "so2": 2.43,
+        "o3": 24.1
+      },
+      "aqi": 24,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4715",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-12 16:13:45",
+      "pollutants": {
+        "pm25": 10.13,
+        "pm10": 20.53,
+        "co": 0.33,
+        "no2": 20.26,
+        "so2": 2.09,
+        "o3": 39.53
+      },
+      "aqi": 39,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4716",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-13 16:13:45",
+      "pollutants": {
+        "pm25": 7.35,
+        "pm10": 26.27,
+        "co": 0.29,
+        "no2": 11.95,
+        "so2": 1.65,
+        "o3": 41.18
+      },
+      "aqi": 41,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4717",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-14 16:13:45",
+      "pollutants": {
+        "pm25": 13.68,
+        "pm10": 22.3,
+        "co": 0.25,
+        "no2": 23.71,
+        "so2": 3.75,
+        "o3": 55.93
+      },
+      "aqi": 55,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4718",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-15 16:13:45",
+      "pollutants": {
+        "pm25": 9.43,
+        "pm10": 18.16,
+        "co": 0.36,
+        "no2": 24.34,
+        "so2": 3.67,
+        "o3": 53.93
+      },
+      "aqi": 53,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4719",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-08 16:13:45",
+      "pollutants": {
+        "pm25": 109.35,
+        "pm10": 231.24,
+        "co": 1.75,
+        "no2": 103.3,
+        "so2": 24.14,
+        "o3": 60.17
+      },
+      "aqi": 184,
+      "aqiCategory": "Very Poor"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b471a",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-09 16:13:45",
+      "pollutants": {
+        "pm25": 145.18,
+        "pm10": 279.41,
+        "co": 2.04,
+        "no2": 89.23,
+        "so2": 21.78,
+        "o3": 46.01
+      },
+      "aqi": 223,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b471b",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-10 16:13:45",
+      "pollutants": {
+        "pm25": 166.5,
+        "pm10": 180.77,
+        "co": 2.28,
+        "no2": 79.79,
+        "so2": 25.7,
+        "o3": 63.48
+      },
+      "aqi": 249,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b471c",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-11 16:13:45",
+      "pollutants": {
+        "pm25": 195.82,
+        "pm10": 227.53,
+        "co": 2.83,
+        "no2": 48.46,
+        "so2": 22.05,
+        "o3": 62.32
+      },
+      "aqi": 293,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b471d",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-12 16:13:45",
+      "pollutants": {
+        "pm25": 153.7,
+        "pm10": 185.77,
+        "co": 1.65,
+        "no2": 71.49,
+        "so2": 13.15,
+        "o3": 52.82
+      },
+      "aqi": 230,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b471e",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-13 16:13:45",
+      "pollutants": {
+        "pm25": 160.74,
+        "pm10": 177.49,
+        "co": 2.64,
+        "no2": 72.89,
+        "so2": 22.1,
+        "o3": 41.4
+      },
+      "aqi": 241,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b471f",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-14 16:13:45",
+      "pollutants": {
+        "pm25": 146.73,
+        "pm10": 281.21,
+        "co": 2.36,
+        "no2": 74.26,
+        "so2": 26.31,
+        "o3": 35.47
+      },
+      "aqi": 224,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4720",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-15 16:13:45",
+      "pollutants": {
+        "pm25": 113.23,
+        "pm10": 286.42,
+        "co": 1.96,
+        "no2": 57.62,
+        "so2": 10.14,
+        "o3": 31.97
+      },
+      "aqi": 229,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4721",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-08 16:13:45",
+      "pollutants": {
+        "pm25": 9.85,
+        "pm10": 17.49,
+        "co": 0.21,
+        "no2": 8.99,
+        "so2": 2.06,
+        "o3": 40.01
+      },
+      "aqi": 40,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4722",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-09 16:13:45",
+      "pollutants": {
+        "pm25": 11.18,
+        "pm10": 12.99,
+        "co": 0.16,
+        "no2": 8.89,
+        "so2": 1.22,
+        "o3": 34.15
+      },
+      "aqi": 34,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4723",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-10 16:13:45",
+      "pollutants": {
+        "pm25": 10.82,
+        "pm10": 19.43,
+        "co": 0.23,
+        "no2": 10.32,
+        "so2": 1.96,
+        "o3": 35.56
+      },
+      "aqi": 35,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4724",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-11 16:13:45",
+      "pollutants": {
+        "pm25": 7.39,
+        "pm10": 12.88,
+        "co": 0.18,
+        "no2": 7.38,
+        "so2": 1.38,
+        "o3": 39.27
+      },
+      "aqi": 39,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4725",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-12 16:13:45",
+      "pollutants": {
+        "pm25": 8.57,
+        "pm10": 12.45,
+        "co": 0.23,
+        "no2": 9.02,
+        "so2": 1.68,
+        "o3": 39.0
+      },
+      "aqi": 39,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4726",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-13 16:13:45",
+      "pollutants": {
+        "pm25": 5.7,
+        "pm10": 20.95,
+        "co": 0.2,
+        "no2": 11.6,
+        "so2": 1.27,
+        "o3": 38.9
+      },
+      "aqi": 38,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4727",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-14 16:13:45",
+      "pollutants": {
+        "pm25": 5.68,
+        "pm10": 12.36,
+        "co": 0.15,
+        "no2": 8.13,
+        "so2": 1.29,
+        "o3": 29.69
+      },
+      "aqi": 29,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4728",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-15 16:13:45",
+      "pollutants": {
+        "pm25": 6.51,
+        "pm10": 20.79,
+        "co": 0.17,
+        "no2": 14.01,
+        "so2": 1.71,
+        "o3": 35.22
+      },
+      "aqi": 35,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4729",
+      "stationId": "60c72b2f9b1d8a2c2c8b4506",
+      "timestamp": "2026-06-15 16:17:38",
+      "pollutants": {
+        "pm25": 72.0,
+        "pm10": 66.0,
+        "co": 1.9,
+        "no2": 2.8,
+        "so2": 2.6,
+        "o3": 60.4
+      },
+      "aqi": 72,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b472a",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-15 16:21:30",
+      "pollutants": {
+        "pm25": 15.5,
+        "pm10": 45.2,
+        "co": 0.85,
+        "no2": 22.4,
+        "so2": 5.1,
+        "o3": 34.0
+      },
+      "aqi": 36,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b472b",
+      "stationId": "60c72b2f9b1d8a2c2c8b4507",
+      "timestamp": "2026-06-15 16:23:43",
+      "pollutants": {
+        "pm25": 263.0,
+        "pm10": 999.0,
+        "co": 2.6,
+        "no2": 4.3,
+        "so2": 1.3,
+        "o3": 8.2
+      },
+      "aqi": 999,
+      "aqiCategory": "Severe"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b472c",
+      "stationId": "60c72b2f9b1d8a2c2c8b4508",
+      "timestamp": "2026-06-15 16:24:05",
+      "pollutants": {
+        "pm25": 38.0,
+        "pm10": 0.0,
+        "co": 0.0,
+        "no2": 0.0,
+        "so2": 0.0,
+        "o3": 0.0
+      },
+      "aqi": 38,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b472d",
+      "stationId": "60c72b2f9b1d8a2c2c8b4509",
+      "timestamp": "2026-06-15 16:24:33",
+      "pollutants": {
+        "pm25": 154.0,
+        "pm10": 59.0,
+        "co": 10.0,
+        "no2": 24.3,
+        "so2": 34.0,
+        "o3": 21.6
+      },
+      "aqi": 154,
+      "aqiCategory": "Very Poor"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b472e",
+      "stationId": "60c72b2f9b1d8a2c2c8b450a",
+      "timestamp": "2026-06-15 16:28:03",
+      "pollutants": {
+        "pm25": 5.0,
+        "pm10": 0.0,
+        "co": 0.0,
+        "no2": 0.0,
+        "so2": 0.0,
+        "o3": 26.6923
+      },
+      "aqi": 27,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b472f",
+      "stationId": "60c72b2f9b1d8a2c2c8b450b",
+      "timestamp": "2026-06-15 17:03:27",
+      "pollutants": {
+        "pm25": 137.0,
+        "pm10": 0.0,
+        "co": 2.8,
+        "no2": 8.3,
+        "so2": 0.0,
+        "o3": 11.4
+      },
+      "aqi": 137,
+      "aqiCategory": "Poor"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4730",
+      "stationId": "60c72b2f9b1d8a2c2c8b4501",
+      "timestamp": "2026-06-17 12:17:01",
+      "pollutants": {
+        "pm25": 20.0,
+        "pm10": 0.0,
+        "co": 2.2,
+        "no2": 11.4,
+        "so2": 0.0,
+        "o3": 23.3
+      },
+      "aqi": 20,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4731",
+      "stationId": "60c72b2f9b1d8a2c2c8b4502",
+      "timestamp": "2026-06-17 12:17:02",
+      "pollutants": {
+        "pm25": 25.0,
+        "pm10": 12.0,
+        "co": 1.0,
+        "no2": 7.4,
+        "so2": 1.1,
+        "o3": 14.7
+      },
+      "aqi": 25,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4732",
+      "stationId": "60c72b2f9b1d8a2c2c8b4503",
+      "timestamp": "2026-06-17 12:17:02",
+      "pollutants": {
+        "pm25": 21.0,
+        "pm10": 8.0,
+        "co": 1.2,
+        "no2": 5.6,
+        "so2": 1.5,
+        "o3": 54.5
+      },
+      "aqi": 21,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4733",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "timestamp": "2026-06-17 12:17:03",
+      "pollutants": {
+        "pm25": 117.0,
+        "pm10": 104.0,
+        "co": 5.2,
+        "no2": 5.2,
+        "so2": 15.1,
+        "o3": 23.2
+      },
+      "aqi": 117,
+      "aqiCategory": "Poor"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4734",
+      "stationId": "60c72b2f9b1d8a2c2c8b4505",
+      "timestamp": "2026-06-17 12:17:03",
+      "pollutants": {
+        "pm25": 53.0,
+        "pm10": 20.0,
+        "co": 3.2,
+        "no2": 25.2,
+        "so2": 0.0,
+        "o3": 1.6
+      },
+      "aqi": 53,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4735",
+      "stationId": "60c72b2f9b1d8a2c2c8b4506",
+      "timestamp": "2026-06-17 12:17:04",
+      "pollutants": {
+        "pm25": 57.0,
+        "pm10": 25.0,
+        "co": 1.9,
+        "no2": 4.2,
+        "so2": 1.6,
+        "o3": 56.5
+      },
+      "aqi": 57,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4736",
+      "stationId": "60c72b2f9b1d8a2c2c8b4507",
+      "timestamp": "2026-06-17 12:17:04",
+      "pollutants": {
+        "pm25": 65.0,
+        "pm10": 73.0,
+        "co": 5.5,
+        "no2": 2.3,
+        "so2": 8.0,
+        "o3": 6.2
+      },
+      "aqi": 73,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4737",
+      "stationId": "60c72b2f9b1d8a2c2c8b4508",
+      "timestamp": "2026-06-17 12:17:05",
+      "pollutants": {
+        "pm25": 42.0,
+        "pm10": 0.0,
+        "co": 0.0,
+        "no2": 0.0,
+        "so2": 0.0,
+        "o3": 0.0
+      },
+      "aqi": 42,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4738",
+      "stationId": "60c72b2f9b1d8a2c2c8b4509",
+      "timestamp": "2026-06-17 12:17:06",
+      "pollutants": {
+        "pm25": 13.0,
+        "pm10": 27.0,
+        "co": 3.7,
+        "no2": 4.2,
+        "so2": 6.1,
+        "o3": 46.3
+      },
+      "aqi": 46,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4739",
+      "stationId": "60c72b2f9b1d8a2c2c8b450a",
+      "timestamp": "2026-06-17 12:17:06",
+      "pollutants": {
+        "pm25": 17.0,
+        "pm10": 0.0,
+        "co": 0.0,
+        "no2": 0.0,
+        "so2": 0.0,
+        "o3": 8.0639
+      },
+      "aqi": 17,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b473a",
+      "stationId": "60c72b2f9b1d8a2c2c8b450b",
+      "timestamp": "2026-06-17 12:17:07",
+      "pollutants": {
+        "pm25": 53.0,
+        "pm10": 0.0,
+        "co": 1.9,
+        "no2": 8.3,
+        "so2": 0.0,
+        "o3": 7.0
+      },
+      "aqi": 53,
+      "aqiCategory": "Moderate"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b473b",
+      "stationId": "60c72b2f9b1d8a2c2c8b450c",
+      "timestamp": "2026-06-17 12:21:27",
+      "pollutants": {
+        "pm25": 25.0,
+        "pm10": 3.0,
+        "co": 0.1,
+        "no2": 2.8,
+        "so2": 2.1,
+        "o3": 21.2
+      },
+      "aqi": 25,
+      "aqiCategory": "Good"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b473c",
+      "stationId": "60c72b2f9b1d8a2c2c8b450d",
+      "timestamp": "2026-06-17 12:22:39",
+      "pollutants": {
+        "pm25": 175.0,
+        "pm10": 111.0,
+        "co": 0.0,
+        "no2": 0.0,
+        "so2": 0.0,
+        "o3": 1.3
+      },
+      "aqi": 175,
+      "aqiCategory": "Very Poor"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b473d",
+      "stationId": "60c72b2f9b1d8a2c2c8b450e",
+      "timestamp": "2026-06-17 12:23:06",
+      "pollutants": {
+        "pm25": 76.0,
+        "pm10": 0.0,
+        "co": 0.0,
+        "no2": 0.0,
+        "so2": 0.0,
+        "o3": 0.0
+      },
+      "aqi": 76,
+      "aqiCategory": "Moderate"
+    }
+  ],
+  "health_advisories": [
+    {
+      "_id": "Good",
+      "aqiRange": {
+        "lower": 0,
+        "upper": 50
+      },
+      "generalAdvisory": "Air quality is satisfactory, and air pollution poses little or no risk.",
+      "sensitiveAdvisory": "It is a perfect day for outdoor activities for everyone.",
+      "actionTip": "Keep doing your part to keep the air clean! Use public transport, walk or cycle.",
+      "colorCode": "#10b981"
+    },
+    {
+      "_id": "Moderate",
+      "aqiRange": {
+        "lower": 51,
+        "upper": 100
+      },
+      "generalAdvisory": "Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.",
+      "sensitiveAdvisory": "Sensitive children and adults should limit prolonged outdoor exertion.",
+      "actionTip": "Reduce driving, avoid burning leaves, and maintain your vehicle to prevent emissions.",
+      "colorCode": "#f59e0b"
+    },
+    {
+      "_id": "Poor",
+      "aqiRange": {
+        "lower": 101,
+        "upper": 150
+      },
+      "generalAdvisory": "Members of sensitive groups may experience health effects. The general public is less likely to be affected.",
+      "sensitiveAdvisory": "Children, active adults, and people with respiratory disease should limit outdoor exertion.",
+      "actionTip": "Conserve energy at home, and choose clean transportation options today.",
+      "colorCode": "#ef4444"
+    },
+    {
+      "_id": "Very Poor",
+      "aqiRange": {
+        "lower": 151,
+        "upper": 200
+      },
+      "generalAdvisory": "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.",
+      "sensitiveAdvisory": "Children and elderly should avoid outdoor physical activity; others should avoid prolonged outdoor exposure.",
+      "actionTip": "Avoid wood burning, use air purifiers indoors, and wear a N95 mask if heading outdoors.",
+      "colorCode": "#a855f7"
+    },
+    {
+      "_id": "Severe",
+      "aqiRange": {
+        "lower": 201,
+        "upper": 500
+      },
+      "generalAdvisory": "Health alert: The risk of health effects is increased for everyone. Emergency conditions are likely.",
+      "sensitiveAdvisory": "Everyone should avoid all outdoor physical activity. Keep windows closed and run air filters.",
+      "actionTip": "Work from home if possible, avoid any physical activity outdoors, and avoid starting any outdoor fires.",
+      "colorCode": "#7f1d1d"
+    }
+  ],
+  "system_alerts": [
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4801",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "recordId": "60c72b2f9b1d8a2c2c8b471b",
+      "pollutant": "PM2.5",
+      "observedValue": 166.5,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-15 10:43:45",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4802",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "recordId": "60c72b2f9b1d8a2c2c8b471c",
+      "pollutant": "PM2.5",
+      "observedValue": 195.82,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-15 10:43:45",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4803",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "recordId": "60c72b2f9b1d8a2c2c8b471d",
+      "pollutant": "PM2.5",
+      "observedValue": 153.7,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-15 10:43:45",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4804",
+      "stationId": "60c72b2f9b1d8a2c2c8b4504",
+      "recordId": "60c72b2f9b1d8a2c2c8b471e",
+      "pollutant": "PM2.5",
+      "observedValue": 160.74,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-15 10:43:45",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4805",
+      "stationId": "60c72b2f9b1d8a2c2c8b4507",
+      "recordId": "60c72b2f9b1d8a2c2c8b472b",
+      "pollutant": "PM2.5",
+      "observedValue": 263.0,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-15 10:53:43",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4806",
+      "stationId": "60c72b2f9b1d8a2c2c8b4507",
+      "recordId": "60c72b2f9b1d8a2c2c8b472b",
+      "pollutant": "AQI",
+      "observedValue": 999.0,
+      "thresholdValue": 200.0,
+      "timestamp": "2026-06-15 10:53:43",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4807",
+      "stationId": "60c72b2f9b1d8a2c2c8b4509",
+      "recordId": "60c72b2f9b1d8a2c2c8b472d",
+      "pollutant": "PM2.5",
+      "observedValue": 154.0,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-15 10:54:33",
+      "status": "Active"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4808",
+      "stationId": "60c72b2f9b1d8a2c2c8b450d",
+      "recordId": "60c72b2f9b1d8a2c2c8b473c",
+      "pollutant": "PM2.5",
+      "observedValue": 175.0,
+      "thresholdValue": 150.0,
+      "timestamp": "2026-06-17 06:52:39",
+      "status": "Active"
+    }
+  ],
+  "audit_logs": [
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4901",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4501",
+      "oldState": null,
+      "newState": {
+        "Name": "Central Park Observatory",
+        "City": "New York",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:43:45",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4902",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4502",
+      "oldState": null,
+      "newState": {
+        "Name": "Westminster Station",
+        "City": "London",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:43:45",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4903",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4503",
+      "oldState": null,
+      "newState": {
+        "Name": "Shinjuku Station South",
+        "City": "Tokyo",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:43:45",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4904",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4504",
+      "oldState": null,
+      "newState": {
+        "Name": "Connaught Place Metro",
+        "City": "Delhi",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:43:45",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4905",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4505",
+      "oldState": null,
+      "newState": {
+        "Name": "Circular Quay Terminal",
+        "City": "Sydney",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:43:45",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4906",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4501",
+      "oldState": null,
+      "newState": {
+        "Name": "Central Park Observatory",
+        "City": "New York"
+      },
+      "timestamp": "2020-01-15 09:00:00",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4907",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4502",
+      "oldState": null,
+      "newState": {
+        "Name": "Westminster Station",
+        "City": "London"
+      },
+      "timestamp": "2021-03-22 09:00:00",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4908",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4503",
+      "oldState": null,
+      "newState": {
+        "Name": "Shinjuku Station South",
+        "City": "Tokyo"
+      },
+      "timestamp": "2019-11-01 09:00:00",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4909",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4504",
+      "oldState": null,
+      "newState": {
+        "Name": "Connaught Place Metro",
+        "City": "Delhi"
+      },
+      "timestamp": "2018-05-12 09:00:00",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b490a",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4505",
+      "oldState": null,
+      "newState": {
+        "Name": "Circular Quay Terminal",
+        "City": "Sydney"
+      },
+      "timestamp": "2022-08-30 09:00:00",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b490b",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4506",
+      "oldState": null,
+      "newState": {
+        "Name": "Coordinates: 40.7100, 74.0000",
+        "City": "Geocoded Point",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:47:38",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b490c",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4729",
+      "oldState": null,
+      "newState": {
+        "StationID": 6,
+        "Timestamp": "2026-06-15 16:17:38",
+        "AQI": 72,
+        "AQI_Category": "Moderate"
+      },
+      "timestamp": "2026-06-15 10:47:38",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b490d",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b472a",
+      "oldState": null,
+      "newState": {
+        "StationID": 5,
+        "Timestamp": "2026-06-15 16:21:30",
+        "AQI": 36,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-15 10:51:30",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b490e",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4507",
+      "oldState": null,
+      "newState": {
+        "Name": "Narela, Delhi, Delhi, India",
+        "City": "india",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:53:43",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b490f",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b472b",
+      "oldState": null,
+      "newState": {
+        "StationID": 7,
+        "Timestamp": "2026-06-15 16:23:43",
+        "AQI": 999,
+        "AQI_Category": "Severe"
+      },
+      "timestamp": "2026-06-15 10:53:43",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4910",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4508",
+      "oldState": null,
+      "newState": {
+        "Name": "San Jose US Embassy, Costa Rica",
+        "City": "costa rica",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:54:05",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4911",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b472c",
+      "oldState": null,
+      "newState": {
+        "StationID": 8,
+        "Timestamp": "2026-06-15 16:24:05",
+        "AQI": 38,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-15 10:54:05",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4912",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b4509",
+      "oldState": null,
+      "newState": {
+        "Name": "Chifeng (\u8d64\u5cf0)",
+        "City": "China",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:54:33",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4913",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b472d",
+      "oldState": null,
+      "newState": {
+        "StationID": 9,
+        "Timestamp": "2026-06-15 16:24:33",
+        "AQI": 154,
+        "AQI_Category": "Very Poor"
+      },
+      "timestamp": "2026-06-15 10:54:33",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4914",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b450a",
+      "oldState": null,
+      "newState": {
+        "Name": "Sherbrooke",
+        "City": "Canada",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 10:58:03",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4915",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b472e",
+      "oldState": null,
+      "newState": {
+        "StationID": 10,
+        "Timestamp": "2026-06-15 16:28:03",
+        "AQI": 27,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-15 10:58:03",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4916",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b450b",
+      "oldState": null,
+      "newState": {
+        "Name": "S.Bernardo-Centro, S\u00e3o Paulo, Brazil",
+        "City": "Brazil",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-15 11:33:27",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4917",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b472f",
+      "oldState": null,
+      "newState": {
+        "StationID": 11,
+        "Timestamp": "2026-06-15 17:03:27",
+        "AQI": 137,
+        "AQI_Category": "Poor"
+      },
+      "timestamp": "2026-06-15 11:33:27",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4918",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4730",
+      "oldState": null,
+      "newState": {
+        "StationID": 1,
+        "Timestamp": "2026-06-17 12:17:01",
+        "AQI": 20,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:47:01",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4919",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4731",
+      "oldState": null,
+      "newState": {
+        "StationID": 2,
+        "Timestamp": "2026-06-17 12:17:02",
+        "AQI": 25,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:47:02",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b491a",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4732",
+      "oldState": null,
+      "newState": {
+        "StationID": 3,
+        "Timestamp": "2026-06-17 12:17:02",
+        "AQI": 21,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:47:02",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b491b",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4733",
+      "oldState": null,
+      "newState": {
+        "StationID": 4,
+        "Timestamp": "2026-06-17 12:17:03",
+        "AQI": 117,
+        "AQI_Category": "Poor"
+      },
+      "timestamp": "2026-06-17 06:47:03",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b491c",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4734",
+      "oldState": null,
+      "newState": {
+        "StationID": 5,
+        "Timestamp": "2026-06-17 12:17:03",
+        "AQI": 53,
+        "AQI_Category": "Moderate"
+      },
+      "timestamp": "2026-06-17 06:47:03",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b491d",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4735",
+      "oldState": null,
+      "newState": {
+        "StationID": 6,
+        "Timestamp": "2026-06-17 12:17:04",
+        "AQI": 57,
+        "AQI_Category": "Moderate"
+      },
+      "timestamp": "2026-06-17 06:47:04",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b491e",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4736",
+      "oldState": null,
+      "newState": {
+        "StationID": 7,
+        "Timestamp": "2026-06-17 12:17:04",
+        "AQI": 73,
+        "AQI_Category": "Moderate"
+      },
+      "timestamp": "2026-06-17 06:47:04",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b491f",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4737",
+      "oldState": null,
+      "newState": {
+        "StationID": 8,
+        "Timestamp": "2026-06-17 12:17:05",
+        "AQI": 42,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:47:05",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4920",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4738",
+      "oldState": null,
+      "newState": {
+        "StationID": 9,
+        "Timestamp": "2026-06-17 12:17:06",
+        "AQI": 46,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:47:06",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4921",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b4739",
+      "oldState": null,
+      "newState": {
+        "StationID": 10,
+        "Timestamp": "2026-06-17 12:17:06",
+        "AQI": 17,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:47:06",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4922",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b473a",
+      "oldState": null,
+      "newState": {
+        "StationID": 11,
+        "Timestamp": "2026-06-17 12:17:07",
+        "AQI": 53,
+        "AQI_Category": "Moderate"
+      },
+      "timestamp": "2026-06-17 06:47:07",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4923",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b450c",
+      "oldState": null,
+      "newState": {
+        "Name": "Bamako US Embassy, Mali",
+        "City": "Mali",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-17 06:51:27",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4924",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b473b",
+      "oldState": null,
+      "newState": {
+        "StationID": 12,
+        "Timestamp": "2026-06-17 12:21:27",
+        "AQI": 25,
+        "AQI_Category": "Good"
+      },
+      "timestamp": "2026-06-17 06:51:27",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4925",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b450d",
+      "oldState": null,
+      "newState": {
+        "Name": "Delmas MP, South Africa; Delmas MP, Nkangala, South Africa",
+        "City": "africa",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-17 06:52:39",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4926",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b473c",
+      "oldState": null,
+      "newState": {
+        "StationID": 13,
+        "Timestamp": "2026-06-17 12:22:39",
+        "AQI": 175,
+        "AQI_Category": "Very Poor"
+      },
+      "timestamp": "2026-06-17 06:52:39",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4927",
+      "actionType": "INSERT",
+      "collectionName": "stations",
+      "documentId": "60c72b2f9b1d8a2c2c8b450e",
+      "oldState": null,
+      "newState": {
+        "Name": "Kabul US Embassy, Afganistan",
+        "City": "Afghanistan",
+        "Status": "Active"
+      },
+      "timestamp": "2026-06-17 06:53:06",
+      "executedBy": "web_admin"
+    },
+    {
+      "_id": "60c72b2f9b1d8a2c2c8b4928",
+      "actionType": "INSERT",
+      "collectionName": "pollution_records",
+      "documentId": "60c72b2f9b1d8a2c2c8b473d",
+      "oldState": null,
+      "newState": {
+        "StationID": 14,
+        "Timestamp": "2026-06-17 12:23:06",
+        "AQI": 76,
+        "AQI_Category": "Moderate"
+      },
+      "timestamp": "2026-06-17 06:53:06",
+      "executedBy": "web_admin"
+    }
+  ],
+  "admin_users": [
+    {
+      "username": "admin",
+      "passwordHash": "$2b$12$KjY5eBvP2468101214161820222426283032343638404244464850",
+      "role": "SuperAdmin",
+      "lastLogin": "2026-06-15 00:23:38",
+      "isActive": true,
+      "_id": "6a2ef8b222514c205cbc5634"
+    }
+  ],
+  "environmental_tips": [
+    {
+      "tipText": "The average person breathes about 11,000 liters of air per day. Protect your lungs!",
+      "category": "General",
+      "author": "AirPulse Team",
+      "_id": "6a2ef8b222514c205cbc562f"
+    },
+    {
+      "tipText": "Did you know? Indoor air quality can be 2 to 5 times worse than outdoor air. Cultivate air-filtering indoor plants.",
+      "category": "Indoor",
+      "author": "CleanAir council",
+      "_id": "6a2ef8b222514c205cbc5630"
+    },
+    {
+      "tipText": "Commuting by foot or cycling once a week reduces your transport emissions by up to 20%.",
+      "category": "Commute",
+      "author": "GreenLife",
+      "_id": "6a2ef8b222514c205cbc5631"
+    },
+    {
+      "tipText": "Planting trees in urban corridors helps block fine dust particles and reduces ambient summer heat.",
+      "category": "Greenery",
+      "author": "CityForest",
+      "_id": "6a2ef8b222514c205cbc5632"
+    },
+    {
+      "tipText": "Avoid burning dry organic waste. Open fires release high-toxicity PM2.5 particles directly into breathing zones.",
+      "category": "Safety",
+      "author": "EcoAlliance",
+      "_id": "6a2ef8b222514c205cbc5633"
+    }
+  ],
+  "search_history": [
+    {
+      "searchId": "6a2fd84b0517f8b283ff02a7",
+      "query": "40.71,-74.00",
+      "country": "74.0000",
+      "state": "Coordinates: 40.7100",
+      "district": "Unknown",
+      "city": "Coordinates: 40.7100",
+      "latitude": 40.71,
+      "longitude": 74.0,
+      "timestamp": "2026-06-15 16:17:39",
+      "source": "search bar",
+      "AQI": 72,
+      "userSessionId": "session-default",
+      "_id": "6a2fd84b0517f8b283ff02a8"
+    },
+    {
+      "searchId": "6a2fd9b70517f8b283ff02ab",
+      "query": "india",
+      "country": "India",
+      "state": "Delhi",
+      "district": "Delhi",
+      "city": "Narela",
+      "latitude": 28.820629,
+      "longitude": 77.101099,
+      "timestamp": "2026-06-15 16:23:43",
+      "source": "search bar",
+      "AQI": 999,
+      "userSessionId": "session-default",
+      "_id": "6a2fd9b70517f8b283ff02ac"
+    },
+    {
+      "searchId": "6a2fd9ce0517f8b283ff02af",
+      "query": "costa rica",
+      "country": "Costa Rica",
+      "state": "San Jose US Embassy",
+      "district": "Unknown",
+      "city": "San Jose US Embassy",
+      "latitude": 9.949488,
+      "longitude": -84.142876,
+      "timestamp": "2026-06-15 16:24:06",
+      "source": "search bar",
+      "AQI": 38,
+      "userSessionId": "session-default",
+      "_id": "6a2fd9ce0517f8b283ff02b0"
+    },
+    {
+      "searchId": "6a2fd9ea0517f8b283ff02b3",
+      "query": "China",
+      "country": "Chifeng (\u8d64\u5cf0)",
+      "state": "Unknown",
+      "district": "Unknown",
+      "city": "Chifeng (\u8d64\u5cf0)",
+      "latitude": 42.257817,
+      "longitude": 118.886856,
+      "timestamp": "2026-06-15 16:24:34",
+      "source": "search bar",
+      "AQI": 154,
+      "userSessionId": "session-default",
+      "_id": "6a2fd9ea0517f8b283ff02b4"
+    },
+    {
+      "searchId": "6a2fdabb0517f8b283ff02b7",
+      "query": "Canada",
+      "country": "Sherbrooke",
+      "state": "Unknown",
+      "district": "Unknown",
+      "city": "Sherbrooke",
+      "latitude": 45.4009928,
+      "longitude": -71.8824288,
+      "timestamp": "2026-06-15 16:28:03",
+      "source": "search bar",
+      "AQI": 27,
+      "userSessionId": "session-default",
+      "_id": "6a2fdabb0517f8b283ff02b8"
+    },
+    {
+      "searchId": "6a2fe3090517f8b283ff02bb",
+      "query": "Brazil",
+      "country": "Brazil",
+      "state": "S\u00e3o Paulo",
+      "district": "S.Bernardo-Centro",
+      "city": "S.Bernardo-Centro",
+      "latitude": -23.698671086,
+      "longitude": -46.546232187,
+      "timestamp": "2026-06-15 17:03:29",
+      "source": "search bar",
+      "AQI": 137,
+      "userSessionId": "session-default",
+      "_id": "6a2fe3090517f8b283ff02bc"
+    },
+    {
+      "searchId": "6a2fe5e40517f8b283ff02bf",
+      "query": "Brazil",
+      "country": "Brazil",
+      "state": "S\u00e3o Paulo",
+      "district": "S.Bernardo-Centro",
+      "city": "S.Bernardo-Centro",
+      "latitude": -23.698671086,
+      "longitude": -46.546232187,
+      "timestamp": "2026-06-15 17:15:40",
+      "source": "search bar",
+      "AQI": 137,
+      "userSessionId": "session-default",
+      "_id": "6a2fe5e40517f8b283ff02c0"
+    },
+    {
+      "searchId": "6a3243f10517f8b283ff02c3",
+      "query": "Mali",
+      "country": "Mali",
+      "state": "Bamako US Embassy",
+      "district": "Unknown",
+      "city": "Bamako US Embassy",
+      "latitude": 12.632524,
+      "longitude": -8.036911,
+      "timestamp": "2026-06-17 12:21:29",
+      "source": "search bar",
+      "AQI": 25,
+      "userSessionId": "session-default",
+      "_id": "6a3243f10517f8b283ff02c4"
+    },
+    {
+      "searchId": "6a3244260517f8b283ff02c7",
+      "query": "india",
+      "country": "India",
+      "state": "Delhi",
+      "district": "Delhi",
+      "city": "Narela",
+      "latitude": 28.820629,
+      "longitude": 77.101099,
+      "timestamp": "2026-06-17 12:22:22",
+      "source": "search bar",
+      "AQI": 73,
+      "userSessionId": "session-default",
+      "_id": "6a3244260517f8b283ff02c8"
+    },
+    {
+      "searchId": "6a32443a0517f8b283ff02cb",
+      "query": "africa",
+      "country": "South Africa",
+      "state": "Nkangala",
+      "district": "South Africa; Delmas MP",
+      "city": "Delmas MP",
+      "latitude": -26.140316,
+      "longitude": 28.697015,
+      "timestamp": "2026-06-17 12:22:42",
+      "source": "search bar",
+      "AQI": 175,
+      "userSessionId": "session-default",
+      "_id": "6a32443a0517f8b283ff02cc"
+    },
+    {
+      "searchId": "6a3244530517f8b283ff02cf",
+      "query": "Afghanistan",
+      "country": "Afganistan",
+      "state": "Kabul US Embassy",
+      "district": "Unknown",
+      "city": "Kabul US Embassy",
+      "latitude": 34.554382,
+      "longitude": 69.2046,
+      "timestamp": "2026-06-17 12:23:07",
+      "source": "search bar",
+      "AQI": 76,
+      "userSessionId": "session-default",
+      "_id": "6a3244530517f8b283ff02d0"
+    },
+    {
+      "searchId": "6a3244880517f8b283ff02d3",
+      "query": "Brazil",
+      "country": "Brazil",
+      "state": "S\u00e3o Paulo",
+      "district": "S.Bernardo-Centro",
+      "city": "S.Bernardo-Centro",
+      "latitude": -23.698671086,
+      "longitude": -46.546232187,
+      "timestamp": "2026-06-17 12:24:00",
+      "source": "search bar",
+      "AQI": 53,
+      "userSessionId": "session-default",
+      "_id": "6a3244880517f8b283ff02d4"
+    }
+  ],
+  "favorite_locations": [],
+  "location_interactions": [
+    {
+      "interactionId": "6a2fd84b0517f8b283ff02a9",
+      "interactionType": "search",
+      "location": "Coordinates: 40.7100, 74.0000",
+      "timestamp": "2026-06-15 16:17:39",
+      "sessionId": "session-default",
+      "_id": "6a2fd84b0517f8b283ff02aa"
+    },
+    {
+      "interactionId": "6a2fd9b70517f8b283ff02ad",
+      "interactionType": "search",
+      "location": "Narela, India",
+      "timestamp": "2026-06-15 16:23:43",
+      "sessionId": "session-default",
+      "_id": "6a2fd9b70517f8b283ff02ae"
+    },
+    {
+      "interactionId": "6a2fd9ce0517f8b283ff02b1",
+      "interactionType": "search",
+      "location": "San Jose US Embassy, Costa Rica",
+      "timestamp": "2026-06-15 16:24:06",
+      "sessionId": "session-default",
+      "_id": "6a2fd9ce0517f8b283ff02b2"
+    },
+    {
+      "interactionId": "6a2fd9ea0517f8b283ff02b5",
+      "interactionType": "search",
+      "location": "Chifeng (\u8d64\u5cf0), Chifeng (\u8d64\u5cf0)",
+      "timestamp": "2026-06-15 16:24:34",
+      "sessionId": "session-default",
+      "_id": "6a2fd9ea0517f8b283ff02b6"
+    },
+    {
+      "interactionId": "6a2fdabb0517f8b283ff02b9",
+      "interactionType": "search",
+      "location": "Sherbrooke, Sherbrooke",
+      "timestamp": "2026-06-15 16:28:03",
+      "sessionId": "session-default",
+      "_id": "6a2fdabb0517f8b283ff02ba"
+    },
+    {
+      "interactionId": "6a2fe3090517f8b283ff02bd",
+      "interactionType": "search",
+      "location": "S.Bernardo-Centro, Brazil",
+      "timestamp": "2026-06-15 17:03:29",
+      "sessionId": "session-default",
+      "_id": "6a2fe3090517f8b283ff02be"
+    },
+    {
+      "interactionId": "6a2fe5e40517f8b283ff02c1",
+      "interactionType": "search",
+      "location": "S.Bernardo-Centro, Brazil",
+      "timestamp": "2026-06-15 17:15:40",
+      "sessionId": "session-default",
+      "_id": "6a2fe5e40517f8b283ff02c2"
+    },
+    {
+      "interactionId": "6a3243f10517f8b283ff02c5",
+      "interactionType": "search",
+      "location": "Bamako US Embassy, Mali",
+      "timestamp": "2026-06-17 12:21:29",
+      "sessionId": "session-default",
+      "_id": "6a3243f10517f8b283ff02c6"
+    },
+    {
+      "interactionId": "6a3244260517f8b283ff02c9",
+      "interactionType": "search",
+      "location": "Narela, India",
+      "timestamp": "2026-06-17 12:22:22",
+      "sessionId": "session-default",
+      "_id": "6a3244260517f8b283ff02ca"
+    },
+    {
+      "interactionId": "6a32443a0517f8b283ff02cd",
+      "interactionType": "search",
+      "location": "Delmas MP, South Africa",
+      "timestamp": "2026-06-17 12:22:42",
+      "sessionId": "session-default",
+      "_id": "6a32443a0517f8b283ff02ce"
+    },
+    {
+      "interactionId": "6a3244530517f8b283ff02d1",
+      "interactionType": "search",
+      "location": "Kabul US Embassy, Afganistan",
+      "timestamp": "2026-06-17 12:23:07",
+      "sessionId": "session-default",
+      "_id": "6a3244530517f8b283ff02d2"
+    },
+    {
+      "interactionId": "6a3244880517f8b283ff02d5",
+      "interactionType": "search",
+      "location": "S.Bernardo-Centro, Brazil",
+      "timestamp": "2026-06-17 12:24:00",
+      "sessionId": "session-default",
+      "_id": "6a3244880517f8b283ff02d6"
+    }
+  ]
+}
